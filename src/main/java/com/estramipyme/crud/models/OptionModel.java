@@ -1,17 +1,22 @@
 package com.estramipyme.crud.models;
 
-public class Option {
+import java.time.LocalDateTime;
+
+public class OptionModel {
     private int id;
     private String question_id;
     private String option_text;
 
-    public Option (int id, String question_id, String option_text){
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    public OptionModel(int id, String question_id, String option_text){
         this.id = id;
         this.question_id = question_id;
         this.option_text = option_text;
     }
 
-    public Option(){}
+    public OptionModel(){}
 
     public int getId(){
         return id;
