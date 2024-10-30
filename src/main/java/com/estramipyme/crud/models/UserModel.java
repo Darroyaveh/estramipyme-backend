@@ -1,6 +1,8 @@
 package com.estramipyme.crud.models;
 
-public class User {
+import java.time.LocalDateTime;
+
+public class UserModel {
     private int id;
     private String name;
     private String surname;
@@ -12,7 +14,11 @@ public class User {
     private String sector;
     private String accept_policy;
 
-    public User(int id, String name, String surname, String email, String password, String person_type, String doc_type, String doc_number, String sector, String accept_policy){
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+
+    public UserModel(int id, String name, String surname, String email, String password, String person_type, String doc_type, String doc_number, String sector, String accept_policy){
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -25,7 +31,7 @@ public class User {
         this.accept_policy = accept_policy;
     }
 
-    public User(){}
+    public UserModel(){}
 
     public int getId(){
         return id;

@@ -1,19 +1,25 @@
 package com.estramipyme.crud.models;
 
-public class Question {
+import java.time.LocalDateTime;
+
+public class QuestionModel {
     private int id;
     private String section;
     private String statement;
     private String subsection;
 
-    public Question(int id, String section, String statement, String subsection){
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+
+    public QuestionModel(int id, String section, String statement, String subsection){
         this.id = id;
         this.section = section;
         this.statement = statement;
         this.subsection = subsection;
     }
 
-    public Question(){}
+    public QuestionModel(){}
 
     public int getId(){
         return id;

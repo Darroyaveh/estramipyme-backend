@@ -1,20 +1,25 @@
 package com.estramipyme.crud.models;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Result {
+public class ResultModel {
     private int id;
     private String user_id;
     private Map<String, Object> result_data;
 
-    public Result (int id, String user_id){
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+
+    public ResultModel(int id, String user_id){
         this.id = id;
         this.user_id = user_id;
         this.result_data = new HashMap<>();
     }
 
-    public Result(){}
+    public ResultModel(){}
 
     public int getId(){
         return id;
