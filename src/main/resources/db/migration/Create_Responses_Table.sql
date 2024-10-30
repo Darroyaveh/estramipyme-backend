@@ -1,3 +1,4 @@
+
 CREATE TABLE responses (
     id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,

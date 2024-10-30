@@ -11,6 +11,7 @@ public class QuestionModel {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+
     public QuestionModel(int id, String section, String statement, String subsection){
         this.id = id;
         this.section = section;

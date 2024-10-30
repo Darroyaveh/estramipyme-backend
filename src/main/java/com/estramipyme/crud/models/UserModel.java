@@ -17,6 +17,7 @@ public class UserModel {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+
     public UserModel(int id, String name, String surname, String email, String password, String person_type, String doc_type, String doc_number, String sector, String accept_policy){
         this.id = id;
         this.name = name;

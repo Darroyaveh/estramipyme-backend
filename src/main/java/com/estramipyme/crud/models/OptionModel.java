@@ -10,6 +10,7 @@ public class OptionModel {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+
     public OptionModel(int id, String question_id, String option_text){
         this.id = id;
         this.question_id = question_id;

@@ -11,6 +11,7 @@ public class ResponseModel {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+
     public ResponseModel(int id, String user_id, String question_id, String response_text){
         this.id = id;
         this.user_id = user_id;

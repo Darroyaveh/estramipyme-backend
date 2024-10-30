@@ -1,3 +1,4 @@
+
 CREATE TABLE options (
     id BIGSERIAL PRIMARY KEY,
     question_id BIGINT NOT NULL,

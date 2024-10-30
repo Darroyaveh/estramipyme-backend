@@ -1,3 +1,4 @@
+
 CREATE TABLE results (
     id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
