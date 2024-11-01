@@ -1,4 +1,4 @@
-package com.estramipyme.crud.api.config;
+package com.estramipyme.crud.config;
 
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ public class FlywayConfig {
     @Bean
     public FlywayMigrationStrategy flywayMigrationStrategy() {
         return flyway -> {
-            // Limpia la base de datos solo en desarrollo
+            // limpia la base de datos solo en desarrollo
             if (environment.acceptsProfiles(Profiles.of("dev"))) {
                 flyway.clean();
             }
