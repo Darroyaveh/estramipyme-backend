@@ -1,10 +1,10 @@
-package com.estramipyme.crud.models;
+package com.estramipyme.crud.persistence.entities;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResultModel {
+public class Result {
     private int id;
     private String user_id;
     private Map<String, Object> result_data;
@@ -13,13 +13,13 @@ public class ResultModel {
     private LocalDateTime updatedAt;
 
 
-    public ResultModel(int id, String user_id){
+    public Result(int id, String user_id){
         this.id = id;
         this.user_id = user_id;
         this.result_data = new HashMap<>();
     }
 
-    public ResultModel(){}
+    public Result(){}
 
     public int getId(){
         return id;

@@ -1,8 +1,8 @@
-package com.estramipyme.crud.models;
+package com.estramipyme.crud.persistence.entities;
 
 import java.time.LocalDateTime;
 
-public class ResponseModel {
+public class Response {
     private int id;
     private String user_id;
     private String question_id;
@@ -12,14 +12,14 @@ public class ResponseModel {
     private LocalDateTime updatedAt;
 
 
-    public ResponseModel(int id, String user_id, String question_id, String response_text){
+    public Response(int id, String user_id, String question_id, String response_text){
         this.id = id;
         this.user_id = user_id;
         this.question_id = question_id;
         this.response_text = response_text;
     }
 
-    public ResponseModel(){}
+    public Response(){}
 
     public int getId(){
         return id;
