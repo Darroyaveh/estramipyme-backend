@@ -2,33 +2,32 @@ package com.estramipyme.crud.dto.request;
 
 public class CreateOptionDTO {
 
-    private String text;  //opciones
-    private boolean isCorrect;
+    private String questionId;
+    private String optionText;
 
     public CreateOptionDTO() {}
 
-    public CreateOptionDTO(String text, boolean isCorrect) {
-        this.text = text;
-        this.isCorrect = isCorrect;
+    public CreateOptionDTO(String questionId, String optionText) {
+        this.questionId = questionId;
+        this.optionText = optionText;
     }
 
-    public String getText() {
-        return text;
+    public String getQuestionId() {
+        return questionId;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
     }
 
-    public boolean isCorrect() {
-        return isCorrect;
+    public String getOptionText() {
+        return optionText;
     }
 
-    public void setCorrect(boolean isCorrect) {
-        this.isCorrect = isCorrect;
+    public void setOptionText(String optionText) {
+        this.optionText = optionText;
     }
 }
-
 
 
 

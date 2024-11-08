@@ -1,45 +1,37 @@
 package com.estramipyme.crud.persistence.entities;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
+@Data
+@Entity
+@Table(name = "options")
 public class Option {
-    private int id;
-    private String question_id;
-    private String option_text;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(name = "question_id", nullable = false)
+    private String questionId;
+
+    @Column(name = "option_text", nullable = false)
+    private String optionText;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-
-    public Option(int id, String question_id, String option_text){
-        this.id = id;
-        this.question_id = question_id;
-        this.option_text = option_text;
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
     }
 
-    public Option(){}
-
-    public int getId(){
-        return id;
-    }
-
-    public void setId(int id){
-        this.id = id;
-    }
-
-    public String getQuestionId(){
-        return question_id;
-    }
-
-    public void setQuestionId(String question_id){
-        this.question_id = question_id;
-    }
-
-    public String getOptionText(){
-        return option_text;
-    }
-
-    public void setOptionText(String option_text){
-        this.option_text = option_text;
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }
