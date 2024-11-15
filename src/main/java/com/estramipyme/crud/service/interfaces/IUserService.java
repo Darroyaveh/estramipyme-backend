@@ -2,12 +2,27 @@ package com.estramipyme.crud.service.interfaces;
 
 import com.estramipyme.crud.dto.request.CreateUserDTO;
 import com.estramipyme.crud.dto.response.UserDTO;
+import com.estramipyme.crud.persistence.entities.User;
+
 import java.util.List;
+import java.util.Optional;
 
 public interface IUserService {
+    
+    // CREATE
     UserDTO createUser(CreateUserDTO createUserDTO);
-    UserDTO getUserById(Long id);
+    User saveUser(User user);
+
+    // READ
     List<UserDTO> getAllUsers();
-    UserDTO updateUser(Long id, CreateUserDTO createUserDTO);
-    void deleteUser(Long id);
+    UserDTO getUserById(int id);
+    List<UserDTO> getUserByName(String name);
+    List<UserDTO> getUserByEmail(String email);
+    Optional<User> findUserByEmail(String email);
+
+    // UPDATE
+    UserDTO updateUser(int id, CreateUserDTO createUserDTO);
+
+    // DELETE
+    void deleteUser(int id);
 }
