@@ -20,7 +20,7 @@ public class FlywayConfig {
         return flyway -> {
             // limpia la base de datos solo en desarrollo
             if (environment.acceptsProfiles(Profiles.of("dev"))) {
-                flyway.clean();
+                // flyway.clean();
             }
             flyway.migrate();
         };
