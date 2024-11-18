@@ -1,55 +1,35 @@
 package com.estramipyme.crud.persistence.entities;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
+@Data
+@Entity
+@Table(name = "responses")
+
 public class Response {
-    private int id;
-    private String user_id;
-    private String question_id;
-    private String response_text;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "question_id", nullable = false)
+	private Question question;
 
-    public Response(int id, String user_id, String question_id, String response_text){
-        this.id = id;
-        this.user_id = user_id;
-        this.question_id = question_id;
-        this.response_text = response_text;
-    }
+	@Column(name = "response_text", nullable = false)
+	private String responseText;
 
-    public Response(){}
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private LocalDateTime createdAt;
 
-    public int getId(){
-        return id;
-    }
+	@Column(name = "updated_at", nullable = false)
+	private LocalDateTime updatedAt;
 
-    public void setId(int id){
-        this.id = id;
-    }
-
-    public String getUserId(){
-        return user_id;
-    }
-
-    public void setUserId(String user_id){
-        this.user_id = user_id;
-    }
-
-    public String getQuestionId(){
-        return question_id;
-    }
-
-    public void setQuestionId(String question_id){
-        this.question_id = question_id;
-    }
-
-    public String getResponseText(){
-        return response_text;
-    }
-
-    public void setResponseText(String response_text){
-        this.response_text = response_text;
-    }
 }
+
