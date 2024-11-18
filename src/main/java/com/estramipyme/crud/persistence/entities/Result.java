@@ -1,47 +1,29 @@
 package com.estramipyme.crud.persistence.entities;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 
+
+@Data
+@Entity
+@Table(name = "results")
 public class Result {
-    private int id;
-    private String user_id;
-    private Map<String, Object> result_data;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(name = "result_data", nullable = false, columnDefinition = "jsonb")
+    private String resultData;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-
-    public Result(int id, String user_id){
-        this.id = id;
-        this.user_id = user_id;
-        this.result_data = new HashMap<>();
-    }
-
-    public Result(){}
-
-    public int getId(){
-        return id;
-    }
-
-    public void setId(int id){
-        this.id = id;
-    }
-
-    public String getUserId(){
-        return user_id;
-    }
-
-    public void setUserId(String user_id){
-        this.user_id = user_id;
-    }
-
-    public Map<String, Object> getResultData(){
-        return result_data;
-    }
-
-    public void setResultData(Map<String, Object> result_data){
-        this.result_data = result_data;
-    }
 }

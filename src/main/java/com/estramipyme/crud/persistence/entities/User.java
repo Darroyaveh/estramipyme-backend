@@ -19,19 +19,22 @@ public class User implements UserDetails{
     private int id;
 
     @Column(nullable = false)
-    private String name;
+    private String firstName;
+
+    @Column(nullable = true)
+    private String lastName;
+
+    @Column(nullable = false)
+    private String docType;
+
+    @Column(nullable = false)
+    private String docNumber;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String password;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(nullable = false)
-    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

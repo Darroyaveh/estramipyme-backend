@@ -28,13 +28,5 @@ public class Question {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public Question(Long id, String section, String statement, String subsection) {
-        this.id = id;
-        this.section = section;
-        this.statement = statement;
-        this.subsection = subsection;
-    }
-
-    public Question() {}
 
 }
