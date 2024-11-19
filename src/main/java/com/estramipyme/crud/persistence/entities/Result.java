@@ -2,6 +2,8 @@ package com.estramipyme.crud.persistence.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Type;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 import java.time.LocalDateTime;
 
@@ -18,8 +20,11 @@ public class Result {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "result_data", nullable = false, columnDefinition = "jsonb")
-    private String resultData;
+
+
+    @Type(JsonBinaryType.class)
+    @Column(name = "result_data", columnDefinition = "jsonb")
+    private ResultData resultData;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
