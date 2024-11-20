@@ -1,39 +1,17 @@
 package com.estramipyme.crud.dto.request;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+@Data
 public class CreateResponseDTO {
-    private Long userId;      // ID del usuario que responde
-    private Long questionId;   // ID de la pregunta
-    private Long selectedOptionId; // ID de la opción seleccionada
 
-    public CreateResponseDTO() {}
+    @NotNull
+    private Long userId;
 
-    public CreateResponseDTO(Long userId, Long questionId, Long selectedOptionId) {
-        this.userId = userId;
-        this.questionId = questionId;
-        this.selectedOptionId = selectedOptionId;
-    }
+    @NotNull
+    private Long questionId;
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Long questionId) {
-        this.questionId = questionId;
-    }
-
-    public Long getSelectedOptionId() {
-        return selectedOptionId;
-    }
-
-    public void setSelectedOptionId(Long selectedOptionId) {
-        this.selectedOptionId = selectedOptionId;
-    }
+    @NotNull
+    private String responseText;
 }
