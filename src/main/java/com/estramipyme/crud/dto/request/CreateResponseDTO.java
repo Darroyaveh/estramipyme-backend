@@ -1,39 +1,23 @@
 package com.estramipyme.crud.dto.request;
 
+import com.estramipyme.crud.persistence.entities.Question;
+import com.estramipyme.crud.persistence.entities.Response;
+import lombok.Data;
+
+@Data
 public class CreateResponseDTO {
-    private Long userId;      // ID del usuario que responde
-    private Long questionId;   // ID de la pregunta
-    private Long selectedOptionId; // ID de la opción seleccionada
+    private Long id;
+    private Question question;
+    private String responseText;
+    private Long userId;
+    private Long resultId;
 
-    public CreateResponseDTO() {}
-
-    public CreateResponseDTO(Long userId, Long questionId, Long selectedOptionId) {
-        this.userId = userId;
-        this.questionId = questionId;
-        this.selectedOptionId = selectedOptionId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Long questionId) {
-        this.questionId = questionId;
-    }
-
-    public Long getSelectedOptionId() {
-        return selectedOptionId;
-    }
-
-    public void setSelectedOptionId(Long selectedOptionId) {
-        this.selectedOptionId = selectedOptionId;
+    public Response toEntity() {
+        Response response = new Response();
+        response.setQuestion(this.question);
+        response.setResponseText(this.responseText);
+        // response.setUserId(this.userId);
+        response.setResultId(this.resultId);
+        return response;
     }
 }

@@ -14,7 +14,7 @@ public class Option {
     private Long id;
 
     @Column(name = "question_id", nullable = false)
-    private String questionId;
+    private Long questionId;
 
     @Column(name = "option_text", nullable = false)
     private String optionText;

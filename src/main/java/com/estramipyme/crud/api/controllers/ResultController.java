@@ -17,12 +17,12 @@ public class ResultController {
         this.resultService = resultService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<ResultDTO> createResult(@RequestBody CreateResultDTO createResultDTO) {
         return ResponseEntity.ok(resultService.createResult(createResultDTO));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/findByResult/{id}")
     public ResponseEntity<ResultDTO> getResult(@PathVariable Long id) {
         return ResponseEntity.ok(resultService.getResultById(id));
     }
