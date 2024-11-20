@@ -26,6 +26,6 @@ public interface ResultRepository extends JpaRepository<Result, Long> {
     boolean existsByUserId(Long userId);
 
     // Consulta para aprovechar el tipo JSONB
-    @Query("SELECT r FROM Result r WHERE function('jsonb_exists', r.resultData, :key)")
+    @Query(value = "SELECT r FROM Result r WHERE function('jsonb_exists', r.resultData, :key) = true")
     List<Result> findResultsWithJsonKey(String key);
 }

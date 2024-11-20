@@ -4,7 +4,6 @@ import com.estramipyme.crud.dto.request.CreateUserDTO;
 import com.estramipyme.crud.dto.response.UserDTO;
 import com.estramipyme.crud.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,13 +16,6 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
-
-    // CREATE
-    @PostMapping("/create")
-    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
-        UserDTO createdUser = userService.createUser(createUserDTO);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-    }
 
     // READ
     @GetMapping("/index")
@@ -38,13 +30,13 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/findByName/{name}")
     public ResponseEntity<List<UserDTO>> getUserByName(@PathVariable String name) {
         List<UserDTO> users = userService.getUserByName(name);
         return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/findByEmail/{email}")
     public ResponseEntity<List<UserDTO>> getUserByEmail(@PathVariable String email) {
         List<UserDTO> users = userService.getUserByEmail(email);
         return ResponseEntity.ok(users);

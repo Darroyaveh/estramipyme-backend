@@ -3,12 +3,12 @@ package com.estramipyme.crud.dto.response;
 public class OptionDTO {
 
     private Long id;
-    private String questionId;
+    private Long questionId;
     private String optionText;
 
     public OptionDTO() {}
 
-    public OptionDTO(Long id, String questionId, String optionText) {
+    public OptionDTO(Long id, Long questionId, String optionText) {
         this.id = id;
         this.questionId = questionId;
         this.optionText = optionText;
@@ -22,11 +22,11 @@ public class OptionDTO {
         this.id = id;
     }
 
-    public String getQuestionId() {
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(String questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 

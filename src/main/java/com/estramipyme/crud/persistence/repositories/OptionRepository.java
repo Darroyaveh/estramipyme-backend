@@ -12,6 +12,6 @@ public interface OptionRepository extends JpaRepository<Option, Long> {
     List<Option> findByQuestionId(Long questionId);
 
     // Consulta que cuenta las opciones por pregunta
-    @Query("SELECT COUNT(o) FROM Option o WHERE o.question.id = :questionId")
+    @Query("SELECT COUNT(o) FROM Option o WHERE o.questionId = :questionId")
     long countOptionsByQuestionId(Long questionId);
 }
