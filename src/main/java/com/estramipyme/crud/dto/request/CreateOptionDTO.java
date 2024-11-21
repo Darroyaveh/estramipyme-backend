@@ -5,7 +5,8 @@ public class CreateOptionDTO {
     private Long questionId;
     private String optionText;
 
-    public CreateOptionDTO() {}
+    public CreateOptionDTO() {
+    }
 
     public CreateOptionDTO(Long questionId, String optionText) {
         this.questionId = questionId;

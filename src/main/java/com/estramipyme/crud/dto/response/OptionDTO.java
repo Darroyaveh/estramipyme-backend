@@ -6,7 +6,8 @@ public class OptionDTO {
     private Long questionId;
     private String optionText;
 
-    public OptionDTO() {}
+    public OptionDTO() {
+    }
 
     public OptionDTO(Long id, Long questionId, String optionText) {
         this.id = id;

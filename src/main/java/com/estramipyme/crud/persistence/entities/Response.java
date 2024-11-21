@@ -2,11 +2,13 @@ package com.estramipyme.crud.persistence.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "responses")
+
 public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +16,11 @@ public class Response {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id", nullable = false)
-    private Question question;
+    private Question questionId;
 
     @Column(name = "response_text", nullable = false)
     private String responseText;
@@ -28,9 +30,6 @@ public class Response {
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-    @Column(name = "result_id", nullable = false)
-    private Long resultId;
 
     @PrePersist
     protected void onCreate() {
@@ -43,38 +42,5 @@ public class Response {
         updatedAt = LocalDateTime.now();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public String getResponseText() {
-        return responseText;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    // public Long getUserId() {
-    //     return user.getId();
-    // }
-
-    public Long getResultId() {
-        return resultId;
-    }
-
-    // public void setUserId(Long userId) {
-    //     if (this.user == null) {
-    //         this.user = new User();
-    //     }
-    //     this.user.setId(userId);
-    // }
-
-    public void setResultId(Long resultId) {
-        this.resultId = resultId;
-    }
 }
+
