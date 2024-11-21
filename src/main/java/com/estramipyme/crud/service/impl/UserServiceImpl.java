@@ -45,10 +45,8 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
         }
 
         User user = new User();
-        user.setName(createUserDTO.getName());
         user.setEmail(createUserDTO.getEmail());
         user.setPassword(passwordEncoder.encode(createUserDTO.getPassword()));
-        user.setPhoneNumber(createUserDTO.getPhoneNumber());
 
         User savedUser = userRepository.save(user);
         return convertToDTO(savedUser);

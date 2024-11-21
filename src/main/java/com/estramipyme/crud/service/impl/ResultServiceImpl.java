@@ -118,7 +118,7 @@ public class ResultServiceImpl implements IResultService {
         ResultDTO dto = new ResultDTO();
         dto.setId(result.getId());
         dto.setUserId((long) result.getUser().getId());
-        dto.setSections(result.getResultData().getSections());
+        //dto.setSections(result.getResultData().getSections());
         dto.setFinalAverage(result.getResultData().getFinalAverage());
         dto.setCreatedAt(result.getCreatedAt());
         return dto;

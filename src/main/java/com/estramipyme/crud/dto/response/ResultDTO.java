@@ -11,6 +11,7 @@ public class ResultDTO {
     private Map<String, SectionResultDTO> sections;
     private double finalAverage;
     private LocalDateTime createdAt;
+    private String Sections; 
 }
 
 @Data

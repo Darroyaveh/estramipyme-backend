@@ -2,21 +2,22 @@ package com.estramipyme.crud.dto.request;
 
 public class CreateOptionDTO {
 
-    private String questionId;
+    private Long questionId;
     private String optionText;
 
-    public CreateOptionDTO() {}
+    public CreateOptionDTO() {
+    }
 
-    public CreateOptionDTO(String questionId, String optionText) {
+    public CreateOptionDTO(Long questionId, String optionText) {
         this.questionId = questionId;
         this.optionText = optionText;
     }
 
-    public String getQuestionId() {
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(String questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 
