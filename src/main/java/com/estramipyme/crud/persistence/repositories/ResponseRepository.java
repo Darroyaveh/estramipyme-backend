@@ -10,14 +10,9 @@ import java.util.List;
 @Repository
 public interface ResponseRepository extends JpaRepository<Response, Long> {
     List<Response> findByUserId(Long userId);
-
     List<Response> findByQuestionId(Long questionId);
 
-    List<Response> findByResultId(Long resultId);
-
-    boolean existsByQuestionId(Long questionId);
-
     // Consulta que cuenta respuestas por usuario
-    @Query("SELECT COUNT(r) FROM Response r WHERE r.userId = :userId")
+    @Query("SELECT COUNT(r) FROM Response r WHERE r.user.id = :userId")
     long countResponsesByUserId(Long userId);
 }
