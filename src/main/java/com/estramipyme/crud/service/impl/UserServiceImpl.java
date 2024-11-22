@@ -21,21 +21,20 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserDetailsService, IUserService {
+public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    
+
     @Autowired
     public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email) .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + email));
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email) .orElseThrow(() -> new UsernameNotFoundException("Correo no encontrado: " + email));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
     }
 
     // CREATE
@@ -87,13 +86,17 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
         return userRepository.findByEmail(email);
     }
 
+    public Optional<User> findUserByDocNumber(String email) {
+        return userRepository.findByDocNumber(email);
+    }
+
 
     // UPDATE
     public UserDTO updateUser(int id, CreateUserDTO createUserDTO) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
 
-        user.setName(createUserDTO.getName());
+        user.setEmail(createUserDTO.getEmail());
         if (!user.getEmail().equals(createUserDTO.getEmail()) &&
                 userRepository.existsByEmail(createUserDTO.getEmail())) {
             throw new RuntimeException("El nuevo email ya está en uso");
@@ -102,7 +105,7 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
         if (createUserDTO.getPassword() != null && !createUserDTO.getPassword().isEmpty()) {
             user.setPassword(passwordEncoder.encode(createUserDTO.getPassword()));
         }
-        user.setPhoneNumber(createUserDTO.getPhoneNumber());
+
 
         User updatedUser = userRepository.save(user);
         return convertToDTO(updatedUser);
@@ -112,17 +115,14 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
     public void deleteUser(int id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
-        user.setActive(false);
         userRepository.save(user);
     }
 
     private UserDTO convertToDTO(User user) {
         UserDTO dto = new UserDTO();
-        dto.setId(user.getId());
-        dto.setName(user.getName());
+        dto.setId(Math.toIntExact(user.getId()));
+        dto.setFullName(user.getFullName());
         dto.setEmail(user.getEmail());
-        dto.setPhoneNumber(user.getPhoneNumber());
-        dto.setActive(user.isActive());
         return dto;
     }
 }

@@ -54,17 +54,17 @@ public class AuthController {
         try {
             // Intentar autenticar al usuario
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+                    new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 
             // Obtener los detalles del usuario, incluido el rol
-            UserDetails userDetails = userServiceImpl.loadUserByUsername(user.getUsername());
+            UserDetails userDetails = userServiceImpl.loadUserByEmail(user.getEmail());
             String role = userDetails.getAuthorities().stream()
                     .findFirst()
                     .map(GrantedAuthority::getAuthority)
                     .orElse("USER"); // Asigna "USER" si no hay rol específico
 
             // Generar JWT con el rol
-            String jwtToken = jwtUtil.generateToken(user.getUsername(), role);
+            String jwtToken = jwtUtil.generateToken(user.getEmail(), role);
 
             // Devolver el JWT al usuario
             return ResponseEntity.ok("Bearer " + jwtToken);
