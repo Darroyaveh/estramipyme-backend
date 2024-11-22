@@ -16,9 +16,10 @@ public interface IUserService {
     // READ
     List<UserDTO> getAllUsers();
     UserDTO getUserById(int id);
-    List<UserDTO> getUserByName(String name);
+    List<UserDTO> getUserByName(String fullName);
     List<UserDTO> getUserByEmail(String email);
     Optional<User> findUserByEmail(String email);
+    Optional<User> findUserByDocNumber(String docNumber);
 
     // UPDATE
     UserDTO updateUser(int id, CreateUserDTO createUserDTO);

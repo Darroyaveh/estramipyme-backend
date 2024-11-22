@@ -43,7 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userServiceImpl.loadUserByUsername(username);
+            UserDetails userDetails = this.userServiceImpl.loadUserByEmail(username);
             
             if (jwtUtil.validateToken(jwt, userDetails.getUsername())) {
                 // Extraer los roles del token y convertirlos en GrantedAuthority

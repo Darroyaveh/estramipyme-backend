@@ -1,37 +1,20 @@
 package com.estramipyme.crud.persistence.entities;
 
-
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Collections;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import lombok.Data;
-
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(nullable = false)
-    private String firstName;
-
-    @Column(nullable = true)
-    private String lastName;
-
-    @Column(nullable = false)
-    private String docType;
-
-    @Column(nullable = false)
-    private String docNumber;
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -39,27 +22,26 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "person_type", nullable = false)
+    private String personType;
+
+    @Column(name = "doc_type", nullable = false)
+    private String docType;
+
+    @Column(name = "doc_number", nullable = false)
+    private String docNumber;
+
     @Column(nullable = false)
-    private String role;
+    private String sector;
+
+    @Column(name = "accept_policy", nullable = false)
+    private boolean acceptPolicy;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(role));
-    }
-
-    // This method is used to return the password of the user.
-    @Override
-    public String getUsername() {
-        return email;
-    }
-
-    private boolean active = true;
 
     @PrePersist
     protected void onCreate() {
