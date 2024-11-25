@@ -1,5 +1,10 @@
 package com.estramipyme.crud.repositories;
 
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
 import com.estramipyme.crud.models.UserItem;
 
 public interface UserRepository extends MongoRepository<UserItem, String>{
